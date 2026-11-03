@@ -1,0 +1,516 @@
+/* =========================================================
+   TECHNOHEXAGONE — WARM WHITE / YELLOW / ORANGE THEME
+   ========================================================= */
+
+:root {
+    --cream: #FFF9ED;
+    --sidebar: #FFF1D6;
+    --white: #FFFFFF;
+    --yellow: #FFC928;
+    --orange: #F28C28;
+    --deep-orange: #C85A16;
+    --ink: #263238;
+    --muted: #788087;
+    --line: #EFE3D2;
+}
+
+/* App canvas and typography */
+.stApp,
+[data-testid="stAppViewContainer"],
+[data-testid="stMain"] {
+    background: var(--cream) !important;
+    color: var(--ink);
+}
+
+html, body, [class*="css"] {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 14px !important;
+}
+
+/* Keep the interface compact and closer to a normal business application. */
+[data-testid="stAppViewContainer"] [data-testid="stMarkdownContainer"],
+[data-testid="stAppViewContainer"] .stText,
+[data-testid="stAppViewContainer"] label,
+[data-testid="stAppViewContainer"] p {
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+h1, h2, h3, h4 {
+    color: var(--ink) !important;
+    letter-spacing: -0.25px;
+}
+
+h1 { font-size: 30px !important; }
+h2 { font-size: 24px !important; }
+h3 { font-size: 19px !important; }
+h4 { font-size: 16px !important; }
+
+p, label, .stMarkdown, .stText {
+    color: var(--ink);
+}
+
+/* Remove Streamlit's top chrome and excess top gap */
+header[data-testid="stHeader"],
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+.stDeployButton {
+    display: none !important;
+}
+
+[data-testid="stMainBlockContainer"],
+.block-container {
+    max-width: 1500px !important;
+    padding-top: 1.35rem !important;
+    padding-bottom: 3rem !important;
+}
+
+/* Sidebar: its own fixed viewport and independent scrolling.
+   Main page scrolls without moving the sidebar brand/navigation. */
+section[data-testid="stSidebar"] {
+    background: var(--sidebar) !important;
+    border-right: 1px solid #F0E0C3;
+    min-width: 255px !important;
+    width: 255px !important;
+}
+
+section[data-testid="stSidebar"] > div {
+    height: 100vh !important;
+    overflow-y: auto !important;
+    background: var(--sidebar) !important;
+}
+
+[data-testid="stSidebarContent"] {
+    background: var(--sidebar) !important;
+    padding: 22px 16px 28px !important;
+}
+
+[data-testid="stSidebar"] img {
+    width: 100%;
+    max-height: 165px;
+    object-fit: contain;
+    display: block;
+    margin: 4px auto 12px;
+}
+
+.sidebar-brand {
+    color: var(--ink);
+    font-size: 22px;
+    font-weight: 800;
+    text-align: center;
+    padding: 20px 0;
+}
+
+.sidebar-caption {
+    text-align: center;
+    color: #A65B17 !important;
+    font-size: 10px !important;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    margin: 8px 0 18px;
+}
+
+[data-testid="stSidebar"] h3 {
+    font-size: 14px !important;
+    font-weight: 800 !important;
+    margin-top: 14px;
+}
+
+[data-testid="stSidebar"] button {
+    border-radius: 10px !important;
+    min-height: 43px;
+    font-size: 14px !important;
+    border: 1px solid #EADCC8 !important;
+    transition: all 0.15s ease;
+}
+
+[data-testid="stSidebar"] button[kind="primary"] {
+    background: linear-gradient(100deg, var(--yellow), var(--orange)) !important;
+    border: 1px solid var(--orange) !important;
+    color: #342719 !important;
+    font-weight: 700 !important;
+}
+
+[data-testid="stSidebar"] button[kind="secondary"] {
+    background: rgba(255,255,255,0.82) !important;
+    color: var(--ink) !important;
+}
+
+.sidebar-agent {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin: 13px 0;
+    font-size: 12px;
+}
+
+.sidebar-agent strong {
+    display: block;
+    color: var(--ink);
+    font-size: 12px;
+}
+
+.sidebar-agent small {
+    display: block;
+    color: var(--muted);
+    margin-top: 3px;
+    font-size: 11px;
+}
+
+.agent-number {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 34px;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    color: #49300E;
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--yellow), var(--orange));
+}
+
+.sidebar-status {
+    background: #FFF9ED;
+    border: 1px solid #F0E3CF;
+    border-radius: 10px;
+    padding: 12px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.sidebar-status small {
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.online-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    background: #43A66B;
+    border-radius: 50%;
+    margin-right: 7px;
+}
+
+/* Main header — no logo here: the sidebar owns the single logo */
+.main-title {
+    min-height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 18px 10px 18px 4px;
+}
+
+.main-title .eyebrow {
+    color: #A65B17;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.7px;
+    margin-bottom: 10px;
+}
+
+.main-title h1 {
+    font-size: clamp(27px, 3vw, 42px) !important;
+    line-height: 1.12 !important;
+    font-weight: 800 !important;
+    margin: 0 0 10px !important;
+}
+
+.main-title p {
+    color: #634B2D;
+    font-size: 15px;
+    margin: 0;
+}
+
+[data-testid="stImage"] img {
+    border-radius: 12px;
+}
+
+.top-divider {
+    height: 7px;
+    border-radius: 99px;
+    background: linear-gradient(90deg, #FFE59A, var(--yellow), var(--orange));
+    margin: 12px 0 26px;
+}
+
+/* Welcome panel */
+.welcome-panel {
+    background: linear-gradient(120deg, #FFF0C2, #FFD46A);
+    border: 1px solid #F6D98E;
+    border-radius: 16px;
+    padding: 26px 30px;
+    min-height: 175px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: 0 5px 16px rgba(130, 88, 24, 0.05);
+}
+
+.welcome-label {
+    color: #A65B17;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.4px;
+    margin-bottom: 10px;
+}
+
+.welcome-panel h2 {
+    font-size: 26px !important;
+    margin: 0 0 9px !important;
+}
+
+.welcome-panel p {
+    color: #57452B;
+    font-size: 14px;
+    margin: 0;
+}
+
+/* Headings and cards */
+.page-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 18px 0 24px;
+}
+
+.page-heading-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex: 0 0 48px;
+    background: #FFFFFF;
+    color: var(--orange);
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    font-size: 25px;
+}
+
+.page-heading h2 {
+    font-size: 25px !important;
+    margin: 0 0 4px !important;
+}
+
+.page-heading p {
+    color: var(--muted);
+    font-size: 13px;
+    margin: 0;
+}
+
+.action-card,
+.document-card {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    padding: 17px;
+    min-height: 105px;
+    margin-bottom: 10px;
+}
+
+.action-card h3 {
+    font-size: 16px !important;
+    margin: 0 0 7px !important;
+}
+
+.action-card p {
+    color: var(--muted);
+    font-size: 12px;
+    margin: 0;
+}
+
+[data-testid="stMetric"] {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    padding: 16px !important;
+    min-height: 105px;
+    box-shadow: 0 3px 10px rgba(70, 49, 18, 0.025);
+}
+
+[data-testid="stMetricLabel"] {
+    font-size: 12px;
+}
+
+[data-testid="stMetricValue"] {
+    font-size: 24px !important;
+    color: var(--ink);
+}
+
+[data-testid="stMetricLabel"] p {
+    font-size: 12px !important;
+}
+
+[data-testid="stDataFrame"] {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* Form fields and buttons */
+.stTextInput input,
+.stTextArea textarea,
+.stSelectbox div[data-baseweb="select"] > div {
+    background: #FFFFFF !important;
+    border: 1px solid #E8DDCF !important;
+    border-radius: 9px !important;
+}
+
+.stTextInput input:focus,
+.stTextArea textarea:focus {
+    border-color: var(--orange) !important;
+    box-shadow: 0 0 0 1px var(--orange) !important;
+}
+
+.stButton button,
+.stDownloadButton button,
+.stFormSubmitButton button {
+    border-radius: 10px !important;
+    min-height: 42px;
+    font-weight: 600;
+}
+
+.stButton button[kind="primary"],
+.stFormSubmitButton button[kind="primary"] {
+    background: linear-gradient(100deg, var(--yellow), var(--orange)) !important;
+    color: #342719 !important;
+    border: 1px solid var(--orange) !important;
+}
+
+.stButton button[kind="secondary"],
+.stDownloadButton button {
+    background: #FFFFFF !important;
+    border: 1px solid var(--line) !important;
+    color: var(--ink) !important;
+}
+
+/* Result containers */
+div[data-testid="stVerticalBlockBorderWrapper"] {
+    background: rgba(255,255,255,0.78);
+    border: 1px solid var(--line);
+    border-radius: 13px;
+    padding: 4px;
+}
+
+.response-card {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-left: 4px solid var(--orange);
+    border-radius: 12px;
+    padding: 18px;
+}
+
+/* Dialog: readable width, independent scroll and consistent spacing */
+div[role="dialog"] {
+    border-radius: 16px !important;
+    border: 1px solid #EADCC8 !important;
+}
+
+div[data-testid="stDialog"] [data-testid="stVerticalBlock"] {
+    gap: 0.85rem;
+}
+
+div[data-testid="stDialog"] h2 {
+    font-size: 23px !important;
+}
+
+div[data-testid="stDialog"] [data-testid="stForm"] {
+    padding: 2px 1px 8px;
+}
+
+div[data-testid="stDialog"] .stFormSubmitButton button {
+    min-height: 48px;
+}
+
+/* Status and chart refinements */
+[data-testid="stAlert"] {
+    border-radius: 11px;
+}
+
+[data-testid="stVegaLiteChart"],
+[data-testid="stArrowVegaLiteChart"] {
+    background: #FFFFFF;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 8px;
+}
+
+/* Chart typography is deliberately smaller and quieter. */
+[data-testid="stVegaLiteChart"] text,
+[data-testid="stArrowVegaLiteChart"] text {
+    font-family: "Segoe UI", Arial, sans-serif !important;
+    font-size: 11px !important;
+}
+
+/* Mobile / smaller screens */
+@media (max-width: 900px) {
+    [data-testid="stMainBlockContainer"],
+    .block-container {
+        padding: 1rem !important;
+    }
+
+    .welcome-panel {
+        min-height: 135px;
+        padding: 20px;
+    }
+
+    .welcome-panel h2 {
+        font-size: 22px !important;
+    }
+
+    .main-title {
+        min-height: auto;
+        padding: 12px 2px;
+    }
+
+    .main-title h1 {
+        font-size: 28px !important;
+    }
+}
+
+/* =========================================================
+   FINAL POLISH — WARM ORANGE PRIMARY ACTIONS
+   ========================================================= */
+
+.stButton button[kind="primary"],
+.stFormSubmitButton button,
+div[data-testid="stFormSubmitButton"] button,
+div[data-testid="stButton"] button[kind="primary"] {
+    background: linear-gradient(100deg, #FFC928 0%, #F28C28 100%) !important;
+    color: #342719 !important;
+    border: 1px solid #D97818 !important;
+    font-weight: 700 !important;
+    box-shadow: 0 2px 5px rgba(160, 91, 18, 0.10) !important;
+}
+
+.stButton button[kind="primary"]:hover,
+.stFormSubmitButton button:hover,
+div[data-testid="stFormSubmitButton"] button:hover,
+div[data-testid="stButton"] button[kind="primary"]:hover {
+    background: linear-gradient(100deg, #F5B914 0%, #DE741A 100%) !important;
+    color: #2D2115 !important;
+    border-color: #C85A16 !important;
+}
+
+.stFormSubmitButton button[kind="secondary"] {
+    background: #FFFFFF !important;
+    color: #263238 !important;
+    border: 1px solid #EFE3D2 !important;
+}
+
+div[data-testid="stProgress"] > div > div {
+    background: linear-gradient(90deg, #FFC928, #F28C28) !important;
+}
+div[data-testid="stProgress"] div[role="progressbar"] {
+    background-color: #F4E8D6 !important;
+}
+
+.response-card {
+    color: #263238 !important;
+    font-size: 14px !important;
+    line-height: 1.8 !important;
+    white-space: normal;
+    overflow-wrap: anywhere;
+}

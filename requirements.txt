@@ -1,0 +1,13 @@
+
+# Multi-Agent Framework
+autogen-agentchat>=0.4
+autogen-ext[openai]>=0.4
+
+# User Interface
+streamlit
+
+# Environment Variables
+python-dotenv
+
+# Data Handling and Logging
+pandas

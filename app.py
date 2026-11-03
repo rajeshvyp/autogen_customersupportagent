@@ -127,6 +127,7 @@ TRANSLATIONS = {
         "urgency": "Urgency",
         "status": "Status",
         "support_response": "Customer support response",
+        "customer_request": "Customer request",
         "keep_ticket": "Please keep your ticket ID. If your request requires human assistance, our support team will follow up using the contact details you provided.",
         "download_response": "↓ Download customer response",
         "escalation_status": "Escalation status",
@@ -264,6 +265,7 @@ TRANSLATIONS = {
         "urgency": "Urgence",
         "status": "Statut",
         "support_response": "Réponse du service client",
+        "customer_request": "Demande du client",
         "keep_ticket": "Conservez votre numéro de ticket. Si une assistance humaine est nécessaire, notre équipe vous recontactera avec les coordonnées fournies.",
         "download_response": "↓ Télécharger la réponse client",
         "escalation_status": "Statut de l'escalade",
@@ -433,6 +435,7 @@ def render_latest_result(result):
     knowledge = result.get("knowledge", {})
     customer = result.get("customer_details", {})
     response = result.get("response", "No response was generated.")
+    complaint = result.get("complaint", "")
 
     st.markdown(f"## {tr('processed')}")
     st.success(tr("recorded"))
@@ -448,6 +451,15 @@ def render_latest_result(result):
         with col:
             st.metric(label, str(value))
 
+    # Display the original customer request.
+    if complaint:
+        st.markdown(f"### {tr('customer_request')}")
+        st.markdown(
+            f'<div class="response-card">'
+            f'{html.escape(complaint).replace(chr(10), "<br>")}'
+            f'</div>',
+            unsafe_allow_html=True,
+        )
     st.markdown(f"### {tr('support_response')}")
     st.caption(tr("keep_ticket"))
     st.markdown(
